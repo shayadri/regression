@@ -3,29 +3,35 @@ base:
   random_state: 42
   target_col: expenses
 
-  data_source:
-    s3_source: source_data/insurance.csv
+data_source:
+  s3_source: source_data/insurance.csv
 
-  load_data:
-    raw_data_csv: data/raw/insur.csv
+load_data:
+  raw_data_csv: data/raw/insur.csv
 
-  split_data:
-    train_path: data/processed/train_insurance.csv
-    test_path: data/processed/test_insurance.csv
-    test_size: 0.2
+split_data:
+  train_path: data/processed/train_insurance.csv
+  test_path: data/processed/test_insurance.csv
+  test_size: 0.2
 
-  estimators:
-    ElasticNet:
-      params:
-        alpha: 0.9
-        l1_ratio: 0.8
+estimators:
+  ElasticNet:
+    params:
+      alpha: 0.9
+      l1_ratio: 0.9
   
-  model_dir: models/model.joblib
+model_dir: models/model.joblib
 
-  reports:
-    params: reports/params.json
-    scores: reports/scores.json
+#reports:
+#  params: reports/params.json
+#  scores: reports/scores.json
 
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: ElasticNet_Regression
+  run_name: mlops
+  registered_model_name: ElasticNet_Model
+  remote_server_uri: http://127.0.0.1:5000
 
 
 
