@@ -1,0 +1,31 @@
+base:
+  project: insurance_prediction
+  random_state: 42
+  target_col: expenses
+
+  data_source:
+    s3_source: source_data/insurance.csv
+
+  load_data:
+    raw_data_csv: data/raw/insur.csv
+
+  split_data:
+    train_path: data/processed/train_insurance.csv
+    test_path: data/processed/test_insurance.csv
+    test_size: 0.2
+
+  estimators:
+    ElasticNet:
+      params:
+        alpha: 0.9
+        l1_ratio: 0.8
+  
+  model_dir: models/model.joblib
+
+  reports:
+    params: reports/params.json
+    scores: reports/scores.json
+
+
+
+
